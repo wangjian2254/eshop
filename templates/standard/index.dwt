@@ -1,0 +1,169 @@
+{% extends "standard/base.dwt" %}
+{% block content %}
+<div id="pageRight" class="fr">
+  <div class="clearfix">
+	 <div class="flash fl">
+	 <!-- #BeginLibraryItem "standard/library/index_ad.lbi" -->{% include "standard/library/index_ad.lbi" %}<!-- #EndLibraryItem -->
+	 </div>
+	 <div class="promotion fr">
+	 <!-- #BeginLibraryItem "standard/library/recommend_promotion.lbi" -->{% include "standard/library/recommend_promotion.lbi" %}<!-- #EndLibraryItem -->
+	 </div>
+	</div>
+	<!-- #BeginLibraryItem "standard/library/recommend_best.lbi" -->{% include "standard/library/recommend_best.lbi" %}<!-- #EndLibraryItem -->
+	<!-- TemplateBeginEditable name="精品推荐下广告宽770" -->
+	<img src="/static/standard/images/ad.gif" width="770" class="dis blank" />
+	<!-- TemplateEndEditable -->
+ <!-- {if $hot_goods} -->
+ <!-- {if $cat_rec_sign neq 1} -->
+	<div class="hotbox blank">
+	 <div class="newtitle">
+热销商品
+	   <div class="tagbox clearfix" id="itemHot">
+
+      <h2><a href="javascript:void(0)" onclick="change_tab_style('itemHot', 'h2', this);get_cat_recommend(3, 0);">全部商品</a></h2>
+
+      <h2 class="h2bg"><a href="javascript:void(0)" onclick="change_tab_style('itemHot', 'h2', this);get_cat_recommend(3, 1)">手机</a></h2>
+      <h2 class="h2bg"><a href="javascript:void(0)" onclick="change_tab_style('itemHot', 'h2', this);get_cat_recommend(3, 2)">Iphone</a></h2>
+      <h2 class="h2bg"><a href="javascript:void(0)" onclick="change_tab_style('itemHot', 'h2', this);get_cat_recommend(3, 3)">Android</a></h2>
+      <h2 class="h2bg"><a href="javascript:void(0)" onclick="change_tab_style('itemHot', 'h2', this);get_cat_recommend(3,4 )">IPad</a></h2>
+			<a href="../search.php?intro=hot">更多</a>
+		 </div>
+	 </div>
+	 <div class="newcontent clearfix">
+	  <div class="fl leftad">
+		<!-- TemplateBeginEditable name="热销商品广告210x277" -->
+		<img src="/static/standard/images/ad1.gif" />
+		<!-- TemplateEndEditable -->
+		</div>
+		<div class="fr rightgood">
+		<div id="show_hot_area">
+		<!-- {/if} -->
+	 	<!--{foreach from=$hot_goods item=goods}-->
+			<div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">绿色水壶</a><br />
+			 <!-- {if $goods.promote_price neq ""} -->
+			 促销价<b class="f1">￥5.66</b><br />
+			</div>
+            <div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">绿色水壶</a><br />
+			 <!-- {if $goods.promote_price neq ""} -->
+			 促销价<b class="f1">￥5.66</b><br />
+			</div>
+            <div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">绿色水壶</a><br />
+			 <!-- {if $goods.promote_price neq ""} -->
+			 促销价<b class="f1">￥5.66</b><br />
+			</div>
+            <div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">绿色水壶</a><br />
+			 <!-- {if $goods.promote_price neq ""} -->
+			 促销价<b class="f1">￥5.66</b><br />
+			</div>
+		<!--{/foreach}-->
+		</div>
+		<!-- {if $cat_rec_sign neq 1} -->
+		<ul class="catArticles">
+		 <li>
+		 <!-- TemplateBeginEditable name="热销商品文章区域一" -->
+	    <a href="article.php?id=35" title="“沃”的世界我做主" class="txtdot">“沃”的世界我做主</a><br>
+			<a href="article.php?id=27" title="800万像素超强拍照机 LG Viewty Smart再曝光" class="txtdot">800万像素超强拍照机 LG Viewt...</a><br>
+			<a href="article.php?id=8" title="诺基亚牵手移动 5款热门TD手机机型推荐" class="txtdot">诺基亚牵手移动 5款热门TD手机机型推荐</a><br>
+			<a href="article.php?id=7" title="三星电子宣布将在中国发布15款3G手机" class="txtdot">三星电子宣布将在中国发布15款3G手机</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		 <li>
+		 <!-- TemplateBeginEditable name="热销商品文章区域二" -->
+	    <a href="article.php?id=33" title="三星SGHU308说明书下载" class="txtdot">三星SGHU308说明书下载</a><br>
+			<a href="article.php?id=32" title="手机游戏下载" class="txtdot">手机游戏下载</a><br>
+			<a href="article.php?id=34" title="3G知识普及" class="txtdot">3G知识普及</a><br>
+			<a href="article.php?id=31" title="诺基亚6681手机广告欣赏" class="txtdot">诺基亚6681手机广告欣赏</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		</ul>
+		</div>
+	 </div>
+	</div>
+	<!-- {/if} -->
+	<!-- {/if} -->
+
+ <!-- {if $new_goods} -->
+ <!-- {if $cat_rec_sign neq 1} -->
+	<div class="newbox blank">
+	 <div class="newtitle">
+	新品上市
+	   <div class="tagbox clearfix" id="itemNew">
+
+      <h2><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, 0);">全部商品</a></h2>
+
+      <h2 class="h2bg"><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, 1)">Mac电脑</a></h2>
+      <h2 class="h2bg"><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, 2)">Mac电脑</a></h2>
+      <h2 class="h2bg"><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, 3)">Mac电脑</a></h2>
+      <h2 class="h2bg"><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, 4)">Mac电脑</a></h2>
+      <h2 class="h2bg"><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, 5)">Mac电脑</a></h2>
+
+			<a href="../search.php?intro=new">更多</a>
+		 </div>
+	 </div>
+	 <div class="newcontent clearfix">
+	  <div class="fl leftad">
+		<!-- TemplateBeginEditable name="新品上架广告210x277" -->
+		<img src="/static/standard/images/ad1.gif" />
+		<!-- TemplateEndEditable -->
+		</div>
+		<div class="fr rightgood">
+		<div id="show_new_area">
+		<!-- {/if} -->
+			<div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">瑞士军刀</a><br />
+			 会员价格<b class="f1">￥88.6</b><br />
+			</div>
+            <div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">瑞士军刀</a><br />
+			 会员价格<b class="f1">￥88.6</b><br />
+			</div><div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">瑞士军刀</a><br />
+			 会员价格<b class="f1">￥88.6</b><br />
+			</div>
+            <div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">瑞士军刀</a><br />
+			 会员价格<b class="f1">￥88.6</b><br />
+			</div>
+		</div>
+		<!-- {if $cat_rec_sign neq 1} -->
+		<ul class="catArticles">
+		 <li>
+		 <!-- TemplateBeginEditable name="新品上市文章区域一" -->
+	    <a href="article.php?id=35" title="“沃”的世界我做主" class="txtdot">“沃”的世界我做主</a><br>
+			<a href="article.php?id=27" title="800万像素超强拍照机 LG Viewty Smart再曝光" class="txtdot">800万像素超强拍照机 LG Viewt...</a><br>
+			<a href="article.php?id=8" title="诺基亚牵手移动 5款热门TD手机机型推荐" class="txtdot">诺基亚牵手移动 5款热门TD手机机型推荐</a><br>
+			<a href="article.php?id=7" title="三星电子宣布将在中国发布15款3G手机" class="txtdot">三星电子宣布将在中国发布15款3G手机</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		 <li>
+		 <!-- TemplateBeginEditable name="新品上市文章区域二" -->
+	    <a href="article.php?id=33" title="三星SGHU308说明书下载" class="txtdot">三星SGHU308说明书下载</a><br>
+			<a href="article.php?id=32" title="手机游戏下载" class="txtdot">手机游戏下载</a><br>
+			<a href="article.php?id=34" title="3G知识普及" class="txtdot">3G知识普及</a><br>
+			<a href="article.php?id=31" title="诺基亚6681手机广告欣赏" class="txtdot">诺基亚6681手机广告欣赏</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		</ul>
+		</div>
+	 </div>
+	</div>
+	<!-- {/if} -->
+	<!-- {/if} -->
+	<!-- TemplateBeginEditable name="右边编辑区域" -->
+	<!-- #BeginLibraryItem "standard/library/group_buy.lbi" -->{% include "standard/library/group_buy.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/auction.lbi" -->{% include "standard/library/auction.lbi" %}<!-- #EndLibraryItem -->
+  <!-- TemplateEndEditable -->
+ </div>
+{% endblock %}

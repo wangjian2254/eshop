@@ -1,0 +1,20 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<div class="hotbox blank">
+	<div class="newtitle">
+	{$goods_cat.name|escape:html}
+	<div class="tagbox"><a href="{$goods_cat.url}">更多</a></div>
+	</div>
+	<div class="groupcontent clearfix">
+   <!--{foreach from=$cat_goods item=goods}-->
+	 <div class="goodsbox">
+	  <div class="imgbox"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" /></a></div>
+   <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name|escape:html}</a><br />
+   <!-- {if $goods.promote_price neq ""} -->
+   {$lang.promote_price}<b class="f1">{$goods.promote_price}</b><br>
+   <!-- {else}-->
+   {$lang.shop_price}<b  class="f1">{$goods.shop_price}</b><br>
+   <!--{/if}-->
+	</div>
+ <!--{/foreach}-->
+	</div>
+</div>

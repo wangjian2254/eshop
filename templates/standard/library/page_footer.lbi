@@ -1,0 +1,54 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="block tc" style="margin-bottom:20px;">
+   <!-- {if $navigator_list.bottom} -->
+        <a href="{$nav.url}"  target="_blank" >免责条款</a>
+         |
+        <a href="{$nav.url}"  target="_blank" >免责条款</a>
+         |
+        <a href="{$nav.url}"  target="_blank" >免责条款</a>
+         |
+        <a href="{$nav.url}"  target="_blank" >免责条款</a>
+         |
+			<br />
+ 版权所有：鲤鱼小组
+ 网店地址： 邮政编码
+ <!-- {if $service_phone} -->
+      Tel: 666666666666666
+ <!-- {/if} -->
+ <!--{if $service_email} -->
+      E-mail: asdb@sina.com<br />
+ <!-- {/if} -->
+{# <!-- QQ{foreach from=$qq item=im} -->#}
+{#      <!-- {if $im} -->#}
+{#      <a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a>#}
+{#      <!-- {/if} -->#}
+{#      <!-- {/foreach} ����QQ���� -->#}
+{#      <!-- {foreach from=$ww item=im} -->#}
+{#      <!-- {if $im} -->#}
+{#			<a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$im|escape:u8_url}&s=2" width="16" height="16" border="0" alt="�Ա�����" />{$im}</a>#}
+{#      <!-- {/if} -->#}
+{#      <!--{/foreach} �����Ա����� -->#}
+{#      <!-- Yahoo Messenger {foreach from=$ym item=im} -->#}
+{#      <!-- {if $im} -->#}
+{#      <a href="http://edit.yahoo.com/config/send_webmesg?.target={$im}n&.src=pg" target="_blank"><img src="/static/standard/yahoo.gif" width="18" height="17" border="0" alt="Yahoo Messenger" /> {$im}</a>#}
+{#      <!-- {/if} -->#}
+{#      <!-- {/foreach} ����Yahoo Messenger -->#}
+{#      <!-- MSN Messenger {foreach from=$msn item=im} -->#}
+{#      <!-- {if $im} -->#}
+{#      <img src="/static/standard/msn.gif" width="18" height="17" border="0" alt="MSN" /> <a href="msnim:chat?contact={$im}">{$im}</a>#}
+{#      <!-- {/if} -->#}
+{#      <!-- {/foreach} ����MSN Messenger -->#}
+{#      <!-- Skype {foreach from=$skype item=im} -->#}
+{#      <!-- {if $im} -->#}
+{#      <img src="http://mystatus.skype.com/smallclassic/{$im|escape:url}" alt="Skype" /><a href="skype:{$im|escape:url}?call">{$im}</a>#}
+{#      <!-- {/if} -->#}
+{#  <!-- {/foreach} --><br />#}
+  <!-- ICP {if $icp_number} -->
+  ICP:<a href="http://www.miibeian.gov.cn/" target="_blank">658416181</a><br />
+  <!-- ����ICP ֤��{/if} -->
+
+
+
+		<div class="tc" id="rss"><a href="{$feed_url}"><img src="/static/standard/images/xml_rss2.gif" alt="rss" /></a></div>
+</div>
+

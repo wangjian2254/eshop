@@ -1,0 +1,49 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="auction blank">
+	<div class="newtitle">
+	团购商品
+	<div class="tagbox"><a href="group_buy.php">更多</a></div>
+	</div>
+	<div class="groupcontent clearfix">
+	 <div class="goodsbox">
+	  <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+	  <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+    会员价<b class="f1">￥55.6</b>
+	 </div>
+	 <div class="goodsbox">
+	  <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+	  <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+    会员价<b class="f1">￥55.6</b>
+	 </div>
+        <div class="goodsbox">
+         <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+         <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+       会员价<b class="f1">￥55.6</b>
+        </div>
+        <div class="goodsbox">
+         <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+         <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+       会员价<b class="f1">￥55.7</b>
+        </div>
+        <div class="goodsbox">
+         <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+         <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+       会员价<b class="f1">￥55.8</b>
+        </div>
+<div class="goodsbox">
+         <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+         <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+       会员价<b class="f1">￥55.8</b>
+        </div>
+        <div class="goodsbox">
+         <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+         <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+       会员价<b class="f1">￥55.8</b>
+        </div>
+        <div class="goodsbox">
+         <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name|escape:html}" /></a></div>
+         <a href="{$goods.url}" title="{$goods.goods_name|escape:html}">白色ipad</a><br />
+       会员价<b class="f1">￥55.8</b>
+        </div>
+	</div>
+</div>

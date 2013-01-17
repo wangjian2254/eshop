@@ -1,0 +1,598 @@
+{% extends "standard/base.dwt" %}
+{% block title %}
+<title>{{ eshop.site.name }}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+{% endblock %}
+{#<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->{% include "standard/library/page_header.lbi" %}#}
+<div class="block clearfix">
+{% block left %}
+  <div id="pageLeft" class="fl">
+	 <!-- TemplateBeginEditable name="左边区域" -->
+	 <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem --> {% include "standard/library/category_tree.lbi" %}
+	 <!-- #BeginLibraryItem "/library/top10.lbi" --><!-- #EndLibraryItem -->{% include "standard/library/top10.lbi" %}
+	 <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->{% include "standard/library/history.lbi" %}
+	 <!-- #BeginLibraryItem "/library/promotion_info.lbi" --><!-- #EndLibraryItem -->{% include "standard/library/promotion_info.lbi" %}
+   <!-- TemplateEndEditable -->
+	</div>
+{% endblock %}
+{% block content %}
+	<div id="pageRight" class="fr">
+	<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->{% include "standard/library/ur_here.lbi" %}
+	<!-- {if $action eq "form"} 搜索表单-->
+	 	<div class="mod2">
+		<h1 class="modTitle"><p>高级搜索</p></h1>
+		<div class="modContent">
+				<form action="search.php" method="get" name="advancedSearchForm" id="advancedSearchForm">
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="8">
+								<tr>
+									<td width="22%" align="right" valign="top">关键字：</td>
+									<td width="78%">
+										<input name="keywords" id="keywords" type="text" size="40" maxlength="120" class="InputBorder" value="特价 iphone4" />
+										<label for="sc_ds"><input type="checkbox" name="sc_ds" value="1" id="sc_ds" {$scck} />{$lang.sc_ds}</label>
+										<br />{$lang.searchkeywords_notice}
+									</td>
+								</tr>
+								<tr>
+									<td align="right">种类：</td>
+									<td><select name="category" id="select" class="InputBorder">
+											<option value="0">所有类型</option>
+                                            {% for k in kinds %}
+                                                <option value="{{ k.pk }}">{{ k.name }}</option>
+                                            {% endfor %}
+                                    </select>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">品牌：</td>
+									<td><select name="brand" id="brand" class="InputBorder">
+											<option value="0">所有品牌</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">价格：</td>
+									<td><input name="min_price" type="text" id="min_price" class="InputBorder" value="0" size="10" maxlength="8" />
+										-
+										<input name="max_price" type="text" id="max_price" class="InputBorder" value="300" size="10" mxlength="8" />
+									</td>
+								</tr>
+								<!--{if $goods_type_list}-->
+{#								<tr>#}
+{#									<td align="right">扩展：</td>#}
+{#									<td><select name="goods_type" onchange="this.form.submit()" class="InputBorder">#}
+{#											<option value="0">所有扩展</option>#}
+{#										</select>#}
+{#									</td>#}
+{#								</tr>#}
+								<!--{/if}-->
+								<!--{if $goods_type_selected > 0}-->
+								<!--{foreach from=$goods_attributes item=item}-->
+								<!--{if $item.type eq 1}-->
+{#								<tr>#}
+{#									<td align="right">{$item.attr}：</td>#}
+{#									<td colspan="3"><input name="attr[{$item.id}]" value="{$item.value}" class="InputBorder" type="text" size="20" maxlength="120" /></td>#}
+{#								</tr>#}
+								<!--{/if}-->
+								<!--{if $item.type eq 2}-->
+{#								<tr>#}
+{#									<td align="right">{$item.attr}：</td>#}
+{#									<td colspan="3"><input name="attr[{$item.id}][from]" class="InputBorder" value="{$item.value.from}" type="text" size="5" maxlength="5" />#}
+{#										-#}
+{#										<input name="attr[{$item.id}][to]" value="{$item.value.to}"  class="InputBorder" type="text" maxlength="5" /></td>#}
+{#								</tr>#}
+								<!--{/if}-->
+								<!--{if $item.type eq 3}-->
+{#								<tr>#}
+{#									<td align="right">{$item.attr}：</td>#}
+{#									<td colspan="3"><select name="attr[{$item.id}]" class="InputBorder">#}
+{#											<option value="0">{$lang.all_option}</option>#}
+{#											{html_options options=$item.options selected=$item.value}#}
+{#										</select></td>#}
+{#								</tr>#}
+								<!--{/if}-->
+								<!--{/foreach}-->
+								<!--{/if}-->
+					
+								<!-- {if $use_storage eq 1} -->
+								<tr>
+									<td align="right">&nbsp;</td>
+									<td><label for="outstock"><input type="checkbox" name="outstock" value="1" id="outstock" checked="checked" /> 隐藏存储</label></td>
+								</tr>
+								<!--{/if}-->
+					
+								<tr>
+									<td colspan="4" align="center"><input type="hidden" name="action" value="form" />
+										<input type="submit" name="Submit" value="搜索" class="bnt_number4" /></td>
+								</tr>
+						</table>
+						</form>
+	 </div>
+	 </div>
+	<!-- {/if} -->	
+	    <!-- {if isset($goods_list)} -->
+    <div class="goodsTitle clearfix">
+    <!--标题及显示方式-->
+        <!-- {if $intromode eq 'best'} -->
+{#         <span class="fl">{$lang.best_goods}</span>#}
+         <!-- {elseif $intromode eq 'new'} -->
+{#         <span class="fl">{$lang.new_goods}</span>#}
+         <!-- {elseif $intromode eq 'hot'} -->
+{#         <span class="fl">{$lang.hot_goods}</span>#}
+         <!-- {elseif $intromode eq 'promotion'} -->
+{#         <span class="fl">{$lang.promotion_goods}</span>#}
+         <!-- {else} -->
+         <span class="fl">搜索结果</span>
+         <!-- {/if} -->
+          <!--{if $goods_list}-->
+          <form action="search.php" method="post"  name="listform" id="form" class="sort fr">
+          显示方式：
+          <a href="javascript:;" onClick="javascript:display_mode('list')"><img src="/static/standard/images/display_mode_list_act.gif" alt="{$lang.display.list}"></a>
+          <a href="javascript:;" onClick="javascript:display_mode('grid')"><img src="/static/standard/images/display_mode_grid.gif" alt="{$lang.display.grid}"></a>
+          <a href="javascript:;" onClick="javascript:display_mode('text')"><img src="/static/standard/images/display_mode_text.gif" alt="{$lang.display.text}"></a>&nbsp;&nbsp;
+              <select name="sort">
+              <option value="0">正序</option>
+              <option value="0">倒叙</option>
+              </select>
+              <select name="order">
+                  <option value="0">正序</option>
+                  <option value="0">倒序</option>
+              </select>
+              <input type="submit" name="imageField" class="go" value="" />
+              <input type="hidden" name="page" value="{$pager.page}" />
+              <input type="hidden" name="display" value="{$pager.display}" id="display" />
+              <!--{foreach from=$pager.search key=key item=item}-->
+{#              {if $key neq "sort" and $key neq "order"}#}
+{#                {if $key eq 'keywords'}#}
+{#                  <input type="hidden" name="{$key}" value="{$item|escape:decode_url}" />#}
+{#                {else}#}
+                  <input type="hidden" name="{$key}" value="{$item}" />
+{#                {/if}#}
+{#              {/if}#}
+              <!--{/foreach}-->
+            </form>
+          <!--{/if}-->
+      </div>
+		<div class="clearfix modContent">
+        <!--{if $goods_list}-->
+
+          <form action="compare.php" method="post" name="compareForm" id="compareForm" onsubmit="return compareGoods(this);">
+          <!-- {if $pager.display == 'list'} -->
+		<div class="cateGoodList">
+    <!--{foreach name=goods_list from=$goods_list item=goods}-->
+    <ul class="clearfix">
+    <li class="thumb"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></li>
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶杯</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价格：55.3</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：55.00</font><br />
+    <!--{else}-->
+    <font class="price">本店价：45.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> | 
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |  
+		<a href="javascript:;" id="compareLink" onClick="Compare.add(1,'{$goods.goods_name|escape:"quotes"}','24')">比较</a>
+    </li>
+    </ul>
+    <ul class="clearfix">
+    <li class="thumb"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></li>
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶杯</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价格：55.3</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：55.00</font><br />
+    <!--{else}-->
+    <font class="price">本店价：45.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> |
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |
+		<a href="javascript:;" id="compareLink" onClick="Compare.add(1,'{$goods.goods_name|escape:"quotes"}','24')">比较</a>
+    </li>
+    </ul>
+    <!--{/foreach}-->
+    </div>
+					<!-- {elseif $pager.display == 'grid'} -->
+					<div class="clearfix grid">
+    <!--{foreach from=$goods_list item=goods}-->
+    <!-- {if $goods.goods_id} -->
+     <div class="goodsbox">
+           <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+           <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+            <!-- {if $show_marketprice} -->
+						市场价<font class="market">55.55</font><br />
+						<!-- {/if} -->
+						<!--{if $goods.promote_price neq "" } -->
+						促销价<font class="price">50.00</font><br />
+						<!--{else}-->
+						本店售价<font class="price">45.00</font><br />
+						<!--{/if}-->
+           <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+		       <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a> 
+		       <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+      </div>
+     <div class="goodsbox">
+           <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+           <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+            <!-- {if $show_marketprice} -->
+						市场价<font class="market">55.55</font><br />
+						<!-- {/if} -->
+						<!--{if $goods.promote_price neq "" } -->
+						促销价<font class="price">50.00</font><br />
+						<!--{else}-->
+						本店售价<font class="price">45.00</font><br />
+						<!--{/if}-->
+           <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+		       <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a>
+		       <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+      </div>
+     <div class="goodsbox">
+           <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+           <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+            <!-- {if $show_marketprice} -->
+						市场价<font class="market">55.55</font><br />
+						<!-- {/if} -->
+						<!--{if $goods.promote_price neq "" } -->
+						促销价<font class="price">50.00</font><br />
+						<!--{else}-->
+						本店售价<font class="price">45.00</font><br />
+						<!--{/if}-->
+           <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+		       <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a>
+		       <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+      </div>
+     <div class="goodsbox">
+           <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+           <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+            <!-- {if $show_marketprice} -->
+						市场价<font class="market">55.55</font><br />
+						<!-- {/if} -->
+						<!--{if $goods.promote_price neq "" } -->
+						促销价<font class="price">50.00</font><br />
+						<!--{else}-->
+						本店售价<font class="price">45.00</font><br />
+						<!--{/if}-->
+           <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+		       <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a>
+		       <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+      </div>
+     <div class="goodsbox">
+           <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+           <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+            <!-- {if $show_marketprice} -->
+						市场价<font class="market">55.55</font><br />
+						<!-- {/if} -->
+						<!--{if $goods.promote_price neq "" } -->
+						促销价<font class="price">50.00</font><br />
+						<!--{else}-->
+						本店售价<font class="price">45.00</font><br />
+						<!--{/if}-->
+           <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+		       <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a>
+		       <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+      </div>
+                        <div class="goodsbox">
+                              <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+                               <!-- {if $show_marketprice} -->
+                                           市场价<font class="market">55.55</font><br />
+                                           <!-- {/if} -->
+                                           <!--{if $goods.promote_price neq "" } -->
+                                           促销价<font class="price">50.00</font><br />
+                                           <!--{else}-->
+                                           本店售价<font class="price">45.00</font><br />
+                                           <!--{/if}-->
+                              <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+                                  <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a>
+                                  <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+                         </div>
+                        <div class="goodsbox">
+                              <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+                               <!-- {if $show_marketprice} -->
+                                           市场价<font class="market">55.55</font><br />
+                                           <!-- {/if} -->
+                                           <!--{if $goods.promote_price neq "" } -->
+                                           促销价<font class="price">50.00</font><br />
+                                           <!--{else}-->
+                                           本店售价<font class="price">45.00</font><br />
+                                           <!--{/if}-->
+                              <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+                                  <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a>
+                                  <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+                         </div>
+                        <div class="goodsbox">
+                              <div class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.goods_name}" /></a></div>
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}">茶叶</a><br />
+                               <!-- {if $show_marketprice} -->
+                                           市场价<font class="market">55.55</font><br />
+                                           <!-- {/if} -->
+                                           <!--{if $goods.promote_price neq "" } -->
+                                           促销价<font class="price">50.00</font><br />
+                                           <!--{else}-->
+                                           本店售价<font class="price">45.00</font><br />
+                                           <!--{/if}-->
+                              <a href="javascript:addToCart({$goods.goods_id})"><acronym class="addToCart">购买</acronym></a>
+                                  <a href="javascript:collect({$goods.goods_id})"><acronym class="collect">收藏</acronym></a>
+                                  <a href="javascript:;" id="compareLink" onClick="Compare.add(2,'{$goods.goods_name|escape:"quotes"}','34')"><acronym class="Compare">比较</acronym></a>
+                         </div>
+
+    <!--{/if}-->
+    <!--{/foreach}-->
+    </div>
+					<!-- {elseif $pager.display == 'text'} -->
+					<div class="cateGoodList">
+    <!--{foreach name=goods_list from=$goods_list item=goods}-->
+    <ul class="clearfix">
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶砖</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价：67</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：60</font><br />
+    <!--{else}-->
+    <font class="price">本店售价：56.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> | 
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |  
+		<a href="javascript:;" id="compareLink" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"quotes"}','{$goods.type}')">比较</a>
+    </li>
+    </ul>
+   <ul class="clearfix">
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶砖</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价：67</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：60</font><br />
+    <!--{else}-->
+    <font class="price">本店售价：56.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> |
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |
+		<a href="javascript:;" id="compareLink" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"quotes"}','{$goods.type}')">比较</a>
+    </li>
+    </ul>
+                        <ul class="clearfix">
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶砖</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价：67</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：60</font><br />
+    <!--{else}-->
+    <font class="price">本店售价：56.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> |
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |
+		<a href="javascript:;" id="compareLink" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"quotes"}','{$goods.type}')">比较</a>
+    </li>
+    </ul>
+                        <ul class="clearfix">
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶砖</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价：67</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：60</font><br />
+    <!--{else}-->
+    <font class="price">本店售价：56.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> |
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |
+		<a href="javascript:;" id="compareLink" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"quotes"}','{$goods.type}')">比较</a>
+    </li>
+    </ul>
+                        <ul class="clearfix">
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶砖</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价：67</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：60</font><br />
+    <!--{else}-->
+    <font class="price">本店售价：56.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> |
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |
+		<a href="javascript:;" id="compareLink" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"quotes"}','{$goods.type}')">比较</a>
+    </li>
+    </ul>
+                        <ul class="clearfix">
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶砖</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价：67</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：60</font><br />
+    <!--{else}-->
+    <font class="price">本店售价：56.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> |
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |
+		<a href="javascript:;" id="compareLink" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"quotes"}','{$goods.type}')">比较</a>
+    </li>
+    </ul>
+                        <ul class="clearfix">
+    <li class="goodsText">
+    <a href="{$goods.url}">
+        <!-- {if $goods.goods_style_name} -->
+{#        <b>{$goods.goods_style_name}</b><br />#}
+        <!-- {else} -->
+        <b>茶砖</b><br />
+        <!-- {/if} -->
+    </a>
+     <!-- {if $goods.goods_brief} -->
+    摘要：摘要<br />
+    <!-- {/if} -->
+    </li>
+    <li>
+    <!-- {if $show_marketprice} -->
+    <font class="market">市场价：67</font><br />
+    <!-- {/if} -->
+    <!--{if $goods.promote_price neq "" } -->
+    <font class="price">促销价：60</font><br />
+    <!--{else}-->
+    <font class="price">本店售价：56.00</font><br />
+    <!--{/if}-->
+    </li>
+    <li class="action">
+		<a href="javascript:addToCart({$goods.goods_id})">购买</a> |
+		<a href="javascript:collect({$goods.goods_id})">收藏</a> |
+		<a href="javascript:;" id="compareLink" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"quotes"}','{$goods.type}')">比较</a>
+    </li>
+    </ul>
+    <!--{/foreach}-->
+    </div>
+					<!-- {/if} -->
+          </form>
+          <script type="text/javascript">
+        {foreach from=$lang.compare_js item=item key=key}
+        var {$key} = "{$item}";
+        {/foreach}
+				
+				{foreach from=$lang.compare_js item=item key=key}
+        {if $key neq 'button_compare'}
+        var {$key} = "{$item}";
+        {else}
+        var button_compare = '';
+        {/if}
+        {/foreach}
+				
+				
+        var compare_no_goods = "{$lang.compare_no_goods}";
+        window.onload = function()
+        {
+          Compare.init();
+          fixpng();
+        }
+				var btn_buy = "{$lang.btn_buy}";
+        var is_cancel = "{$lang.is_cancel}";
+        var select_spe = "{$lang.select_spe}";
+        </script>
+        <!--{else}-->
+        <div class="tips">没有满足条件的产品</div>
+        <!--{/if}-->
+    <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+   <!-- {/if} -->	
+		</div>	
+	</div>
+{% endblock %}
+</div>
+<!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+

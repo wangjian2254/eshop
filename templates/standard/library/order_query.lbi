@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{if empty($order_query)}-->
+<script>var invalid_order_sn = "{$lang.invalid_order_sn}"</script>
+<div class="mod1">
+	 <h1 class="mod1tit"><p>订单查询</p></h1>
+	 <form name="ecsOrderQuery" action="blank">
+    <input type="text" name="order_sn" class="InputBorder blank" size="25"  /><br />
+    <input type="button" value="查询该订单号" class="bnt_number6" onclick="orderQuery()" />
+  </form>
+  <div id="ECS_ORDER_QUERY" class="blank">
+			<b>订单号  </b><a href="user.php?act=order_detail&order_id={$order_query.order_id}"> 354615198</a><br>
+
+			<b>订单状态  </b><font class="f1"> 已发货</font><br>
+			<b>快递公司  </b >韵达<br>
+			<b>发货日期 </b> 2011.11.02<br>
+	  </div>
+</div>

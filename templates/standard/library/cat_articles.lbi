@@ -1,0 +1,6 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{foreach from=$articles item=article_item name=cat_articles}-->
+<!-- {if $smarty.foreach.cat_articles.index lt 4} 限制文章显示数量 -->
+<a href="{$article_item.url}" title="{$article_item.title|escape:html}" class="txtdot">{$article_item.short_title|truncate:20}</a><br />
+<!-- {/if} -->
+<!--{/foreach}-->

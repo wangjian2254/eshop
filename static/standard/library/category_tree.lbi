@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<div class="mod1">
+ <h1 class="mod1tit"><p>{$lang.goods_category}</p></h1>
+ <dl class="categoryTree">
+	<!--{foreach from=$categories item=cat}-->
+	<dt><a href="{$cat.url}">{$cat.name|escape:html}</a></dt>
+	<!--{if $cat.cat_id}-->
+	<dd>
+	<!--{foreach name=childs from=$cat.cat_id item=child}-->
+	<acronym class="childs"><a href="{$child.url}" title="{$child.name|escape:html}" class="txtdot">{$child.name|escape:html}</a></acronym>
+	<!--{/foreach}-->
+	</dd>
+	<!--{/if}-->
+	<!--{/foreach}-->
+</dl>
+</div>

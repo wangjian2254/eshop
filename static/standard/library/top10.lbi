@@ -1,0 +1,26 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<!--{if $top_goods}-->
+<div class="mod1">
+ <h1 class="mod1tit"><p>{$lang.top10}</p></h1>
+ <ul id="top10">
+		 <!-- {foreach name=top_goods from=$top_goods item=goods}-->
+		  <li>
+			 <div class="first clearfix">
+			  <span class="fl">
+				<img src="../images/top_{$smarty.foreach.top_goods.iteration}.gif" /> <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a>
+				</span>
+				<span class="fr"><b class="f1">{$goods.price}</b></span>
+			 </div>
+			 <div class="last clearfix">
+			  <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" align="left" /></a>
+				
+				<b class="f1">{$smarty.foreach.top_goods.iteration}。</b> <a href="{$goods.url}" title="{$goods.name|escape:html}"><b>{$goods.short_name}</b></a><br />
+				{$lang.shop_price}<b class="f1">{$goods.price}</b><br /> 
+
+			 </div>
+			</li>
+		 <!-- {/foreach} -->	
+		 </ul>
+ <script>top10("top10","cur");</script>
+</div>
+<!--{/if}-->

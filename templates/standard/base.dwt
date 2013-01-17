@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- TemplateBeginEditable name="doctitle" -->
+{% block title %}
+<title>{{ eshop.site.name }}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+{% endblock %}
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+
+{% block header %}
+<link href="/static/standard/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/standard/js/action.js"></script>
+{% endblock %}
+</head>
+<body>
+{% block top %}
+    <!-- #BeginLibraryItem "/library/page_header.lbi" -->{% include "standard/library/page_header.lbi" %}<!-- #EndLibraryItem -->
+{% endblock %}
+<div class="block clearfix">
+{% block left %}
+ <div id="pageLeft" class="fl">
+ <!-- TemplateBeginEditable name="左边区域" -->
+  <!-- #BeginLibraryItem "/library/category_tree.lbi" -->{% include "standard/library/category_tree.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/brands.lbi" -->{% include "standard/library/brands.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/top10.lbi" -->{% include "standard/library/top10.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/promotion_info.lbi" -->{% include "standard/library/promotion_info.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/new_articles.lbi" -->{% include "standard/library/new_articles.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/invoice_query.lbi" -->{% include "standard/library/invoice_query.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/order_query.lbi" -->{% include "standard/library/order_query.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/email_list.lbi" -->{% include "standard/library/email_list.lbi" %}<!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "standard/library/vote_list.lbi" --><!-- #EndLibraryItem -->
+ <!-- TemplateEndEditable -->	
+
+ </div>
+{% endblock %}
+{% block content %}
+ 
+ {% endblock %}
+</div>
+{% block footer%}
+<!-- #BeginLibraryItem "standard/library/help.lbi" -->{% include "standard/library/help.lbi" %}<!-- #EndLibraryItem -->
+<!--{if $img_links  or $txt_links }-->
+<div class="links">
+ <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+{#	<a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" /></a>#}
+	<!--结束图片类型的友情链接{/foreach}-->
+	<!-- {if $txt_links} -->
+	<!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+	[<a href="{$link.url}" target="_blank" title="{$link.name}">凡客</a>]
+    [<a href="{$link.url}" target="_blank" title="{$link.name}">凡客</a>]
+    [<a href="{$link.url}" target="_blank" title="{$link.name}">凡客</a>]
+    [<a href="{$link.url}" target="_blank" title="{$link.name}">凡客</a>]
+    [<a href="{$link.url}" target="_blank" title="{$link.name}">凡客</a>]
+
+
+	<!--结束文字类型的友情链接{/foreach}-->
+	<!-- {/if} -->
+</div>
+<!--{/if}-->
+<!-- #BeginLibraryItem "standard/library/page_footer.lbi" -->{% include "standard/library/page_footer.lbi" %}<!-- #EndLibraryItem -->
+{% endblock %}
+</body>
+{% block endjs %}
+{% endblock %}
+</html>

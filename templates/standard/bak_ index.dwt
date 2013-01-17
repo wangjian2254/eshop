@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,index.js'}
+<script type="text/javascript" src="js/action.js"></script>
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="block clearfix">
+ <div id="pageLeft" class="fl">
+ <!-- TemplateBeginEditable name="左边区域" -->
+  <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/brands.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/top10.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/promotion_info.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/new_articles.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/invoice_query.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/order_query.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/email_list.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/vote_list.lbi" --><!-- #EndLibraryItem -->
+ <!-- TemplateEndEditable -->	
+
+ </div>
+ <div id="pageRight" class="fr">
+  <div class="clearfix">
+	 <div class="flash fl">
+	 <!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem -->
+	 </div>
+	 <div class="promotion fr">
+	 <!-- #BeginLibraryItem "/library/recommend_promotion.lbi" --><!-- #EndLibraryItem -->
+	 </div>
+	</div>
+	<!-- #BeginLibraryItem "/library/recommend_best.lbi" --><!-- #EndLibraryItem -->
+	<!-- TemplateBeginEditable name="精品推荐下广告宽770" -->
+	<img src="images/ad.gif" width="770" class="dis blank" />
+	<!-- TemplateEndEditable -->
+ <!-- {if $hot_goods} -->
+ <!-- {if $cat_rec_sign neq 1} -->
+	<div class="hotbox blank">
+	 <div class="newtitle">
+	 {$lang.hot_goods}
+	   <div class="tagbox clearfix" id="itemHot">
+		  {if $cat_rec[3]}
+      <h2><a href="javascript:void(0)" onclick="change_tab_style('itemHot', 'h2', this);get_cat_recommend(3, 0);">{$lang.all_goods}</a></h2>
+      {foreach from=$cat_rec[3] item=rec_data}
+      <h2 class="h2bg">
+			<a href="javascript:void(0)" onclick="change_tab_style('itemHot', 'h2', this);get_cat_recommend(3, {$rec_data.cat_id})">{$rec_data.cat_name}</a></h2>
+      {/foreach}
+      {/if}
+			<a href="../search.php?intro=hot">更多</a>
+		 </div>
+	 </div>
+	 <div class="newcontent clearfix">
+	  <div class="fl leftad">
+		<!-- TemplateBeginEditable name="热销商品广告210x277" -->
+		<img src="images/ad1.gif" />
+		<!-- TemplateEndEditable -->
+		</div>
+		<div class="fr rightgood">
+		<div id="show_hot_area">
+		<!-- {/if} -->
+	 	<!--{foreach from=$hot_goods item=goods}-->
+			<div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name|truncate:11}</a><br />
+			 <!-- {if $goods.promote_price neq ""} -->
+			 {$lang.promote_price}<b class="f1">{$goods.promote_price}</b><br />
+			 <!-- {else}-->
+			 {$lang.shop_price}<b class="f1">{$goods.shop_price}</b><br />
+			 <!--{/if}-->
+			</div>
+		<!--{/foreach}-->
+		</div>
+		<!-- {if $cat_rec_sign neq 1} -->
+		<ul class="catArticles">
+		 <li>
+		 <!-- TemplateBeginEditable name="热销商品文章区域一" -->
+	    <a href="article.php?id=35" title="“沃”的世界我做主" class="txtdot">“沃”的世界我做主</a><br>
+			<a href="article.php?id=27" title="800万像素超强拍照机 LG Viewty Smart再曝光" class="txtdot">800万像素超强拍照机 LG Viewt...</a><br>
+			<a href="article.php?id=8" title="诺基亚牵手移动 5款热门TD手机机型推荐" class="txtdot">诺基亚牵手移动 5款热门TD手机机型推荐</a><br>
+			<a href="article.php?id=7" title="三星电子宣布将在中国发布15款3G手机" class="txtdot">三星电子宣布将在中国发布15款3G手机</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		 <li>
+		 <!-- TemplateBeginEditable name="热销商品文章区域二" -->
+	    <a href="article.php?id=33" title="三星SGHU308说明书下载" class="txtdot">三星SGHU308说明书下载</a><br>
+			<a href="article.php?id=32" title="手机游戏下载" class="txtdot">手机游戏下载</a><br>
+			<a href="article.php?id=34" title="3G知识普及" class="txtdot">3G知识普及</a><br>
+			<a href="article.php?id=31" title="诺基亚6681手机广告欣赏" class="txtdot">诺基亚6681手机广告欣赏</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		</ul>
+		</div>
+	 </div>
+	</div>
+	<!-- {/if} -->
+	<!-- {/if} -->
+	
+ <!-- {if $new_goods} -->
+ <!-- {if $cat_rec_sign neq 1} -->
+	<div class="newbox blank">
+	 <div class="newtitle">
+	 {$lang.new_goods}
+	   <div class="tagbox clearfix" id="itemNew">
+		  {if $cat_rec[2]}
+      <h2><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, 0);">{$lang.all_goods}</a></h2>
+      {foreach from=$cat_rec[2] item=rec_data}
+      <h2 class="h2bg"><span></span><a href="javascript:void(0)" onclick="change_tab_style('itemNew', 'h2', this);get_cat_recommend(2, {$rec_data.cat_id})">{$rec_data.cat_name}</a></h2>
+      {/foreach}
+      {/if}
+			<a href="../search.php?intro=new">更多</a>
+		 </div>
+	 </div>
+	 <div class="newcontent clearfix">
+	  <div class="fl leftad">
+		<!-- TemplateBeginEditable name="新品上架广告210x277" -->
+		<img src="images/ad1.gif" />
+		<!-- TemplateEndEditable -->
+		</div>
+		<div class="fr rightgood">
+		<div id="show_new_area">
+		<!-- {/if} -->
+	 	<!--{foreach from=$new_goods item=goods}-->
+			<div class="goodsbox">
+				<div class="imgbox"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" /></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name|truncate:11}</a><br />
+			 <!-- {if $goods.promote_price neq ""} -->
+			 {$lang.promote_price}<b class="f1">{$goods.promote_price}</b><br />
+			 <!-- {else}-->
+			 {$lang.shop_price}<b class="f1">{$goods.shop_price}</b><br />
+			 <!--{/if}-->
+			</div>
+		<!--{/foreach}-->
+		</div>
+		<!-- {if $cat_rec_sign neq 1} -->
+		<ul class="catArticles">
+		 <li>
+		 <!-- TemplateBeginEditable name="新品上市文章区域一" -->
+	    <a href="article.php?id=35" title="“沃”的世界我做主" class="txtdot">“沃”的世界我做主</a><br>
+			<a href="article.php?id=27" title="800万像素超强拍照机 LG Viewty Smart再曝光" class="txtdot">800万像素超强拍照机 LG Viewt...</a><br>
+			<a href="article.php?id=8" title="诺基亚牵手移动 5款热门TD手机机型推荐" class="txtdot">诺基亚牵手移动 5款热门TD手机机型推荐</a><br>
+			<a href="article.php?id=7" title="三星电子宣布将在中国发布15款3G手机" class="txtdot">三星电子宣布将在中国发布15款3G手机</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		 <li>
+		 <!-- TemplateBeginEditable name="新品上市文章区域二" -->
+	    <a href="article.php?id=33" title="三星SGHU308说明书下载" class="txtdot">三星SGHU308说明书下载</a><br> 
+			<a href="article.php?id=32" title="手机游戏下载" class="txtdot">手机游戏下载</a><br>
+			<a href="article.php?id=34" title="3G知识普及" class="txtdot">3G知识普及</a><br>
+			<a href="article.php?id=31" title="诺基亚6681手机广告欣赏" class="txtdot">诺基亚6681手机广告欣赏</a><br>
+	   <!-- TemplateEndEditable -->
+		 </li>
+		</ul>
+		</div>
+	 </div>
+	</div>
+	<!-- {/if} -->
+	<!-- {/if} -->
+	<!-- TemplateBeginEditable name="右边编辑区域" -->
+	<!-- #BeginLibraryItem "/library/group_buy.lbi" --><!-- #EndLibraryItem -->
+	<!-- #BeginLibraryItem "/library/auction.lbi" --><!-- #EndLibraryItem --> 
+  <!-- TemplateEndEditable -->
+
+ </div>
+</div>
+<!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 
+<!--{if $img_links  or $txt_links }-->
+<div class="links">
+ <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+	<a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" /></a>
+	<!--结束图片类型的友情链接{/foreach}-->
+	<!-- {if $txt_links} -->
+	<!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+	[<a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>]
+	<!--结束文字类型的友情链接{/foreach}-->
+	<!-- {/if} -->
+</div>
+<!--{/if}-->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

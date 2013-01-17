@@ -1,0 +1,81 @@
+
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+<div class="block clearfix">
+  <div class="logo fl"><a href="../index.php"><img src="/static/standard/images/logo.gif" alt="logo" /></a></div>
+	<div class="shopTopNav fr tr">
+
+  <font id="ECS_MEMBERZONE"></font>
+	<!--{if $navigator_list.top}-->
+        您好,欢迎光临本店! <a href="" target="_blank" >登录</a> <a href="" target="_blank" >免费注册</a>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="" target="_blank" >查看购物车</a> |
+        <a href="" target="_blank" >选购中心</a> |
+        <a href="" target="_blank" >标签云</a> |
+        <a href="" target="_blank" >报价单</a> 
+	</div>
+</div>
+<div class="shopNav">
+ <span class="l"></span><span class="r"></span>
+ <ul class="clearfix">
+ <li  class="curs"> <span class="l"></span><span class="r"></span><a href="../index.php">{{ eshop.site.name }}</a></li>
+ <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+  <li ><span class="l"></span><span class="r"></span><a href="{$nav.url}" target="_blank" >栏目1</a></li>
+  <li ><span class="l"></span><span class="r"></span><a href="{$nav.url}" target="_blank" >栏目2</a></li>
+  <li ><span class="l"></span><span class="r"></span><a href="{$nav.url}" target="_blank" >栏目3</a></li>
+ <!-- {/foreach} -->
+ </ul>
+ <div class="searchbox clearfix">
+  <script type="text/javascript">
+
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+				    alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+   
+    </script>
+  <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" class="fl">
+   <select name="category" id="category" class="B_input">
+      <option value="0">内衣</option>
+     
+    </select>
+   <input name="keywords" type="text" id="keyword" value="兰蔻" />
+   <input name="imageField" type="submit" value="搜索" class="bnt_number2" />
+   <a href="search.php?act=advanced_search">高级搜索</a>
+   </form>
+  <div class="cart fr">
+	  <div id="ECS_CARTINFO" class="none">
+          5,12.56
+		</div>
+	  <div class="fl">购物车<font id="a1">0</font>商品，总金额￥<font id="a2">0.00</font></div>
+		<div class="fr w40"><a href="flow.php">去结算</a></div>
+		<script type="text/javascript">cart();</script>
+	</div>
+ </div>
+</div>
+<div class="hot_keyword blank">
+<span class="l"></span><span class="r"></span>
+热门搜索：
+   <a href="search.php?keywords={$val|escape:url}">内衣</a>
+    |
+   <a href="search.php?keywords={$val|escape:url}">风衣</a>
+    |
+
+   <a href="search.php?keywords={$val|escape:url}">面膜</a>
+    |
+
+</div>

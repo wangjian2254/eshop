@@ -1,0 +1,75 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $helps} -->
+<div class="block" id="help">
+  <div class="mod1 clearfix">
+	 <h1 class="mod1tit"><p>网店帮助</p></h1>
+	 <!-- {foreach from=$helps item=help_cat} -->
+		 <dl>
+		  <dt>新手上路</dt>
+		  <dd>
+		  <!-- {foreach from=$help_cat.article item=item} -->
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+		  <!-- {/foreach} -->
+		  </dd>
+		 </dl>
+      <dl>
+		  <dt>新手上路</dt>
+		  <dd>
+		  <!-- {foreach from=$help_cat.article item=item} -->
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+		  <!-- {/foreach} -->
+		  </dd>
+		 </dl>
+      <dl>
+		  <dt>新手上路</dt>
+		  <dd>
+		  <!-- {foreach from=$help_cat.article item=item} -->
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+		  <!-- {/foreach} -->
+		  </dd>
+		 </dl>
+      <dl>
+		  <dt>新手上路</dt>
+		  <dd>
+		  <!-- {foreach from=$help_cat.article item=item} -->
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+		  <!-- {/foreach} -->
+		  </dd>
+		 </dl>
+      <dl>
+		  <dt>新手上路</dt>
+		  <dd>
+		  <!-- {foreach from=$help_cat.article item=item} -->
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+			<a href="{$item.url}" title="{$item.title|escape:html}" class="txtdot">售后流程</a><br />
+		  <!-- {/foreach} -->
+		  </dd>
+		 </dl>
+<!-- {/foreach} -->
+	</div>
+</div>
+<script type="text/javascript">
+var itemdl = document.getElementById("help").getElementsByTagName("dt");
+for(var i=0; i<itemdl.length; i++){
+  if(i%2==0){
+	itemdl[i].className="bg1";
+	}else{
+	itemdl[i].className="bg2";
+	}
+}
+</script>
+<!-- {/if} -->

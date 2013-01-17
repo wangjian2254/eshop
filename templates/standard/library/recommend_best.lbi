@@ -1,0 +1,64 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $best_goods} -->
+<div class="mod1">
+ <h1 class="mod1tit"><p>精品推荐</p><a href="../search.php?intro=best" class="more">more</a></h1>
+ <div class="bestbox">
+ 		  <!--{foreach from=$best_goods item=goods}-->
+				<div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+     <div class="goodsbox">
+					<p class="imgbox"><a href="{$goods.url}"><img src="/static/standard/images/nopic.gif" alt="{$goods.name|escape:html}" /></a></p>
+				 <a href="{$goods.url}" title="{$goods.name|escape:html}">蕾丝玫瑰性感紫</a><br />
+				 <!-- {if $goods.promote_price neq ""} -->
+				 促销价<b class="f1">￥5.61</b><br />
+				</div>
+			<!--{/foreach}-->
+ </div>
+</div>
+<!-- {/if} -->

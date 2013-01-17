@@ -1,0 +1,121 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<!-- {if $brand_list} -->
+<div class="mod1">
+ <h1 class="mod1tit">
+ <p>{$lang.all_brand}</p>
+ <div class="more" id="more">
+	<acronym class="up" onmousedown="ISL_GoUp_1();" onmouseup="ISL_StopUp_1()" onmouseout="ISL_StopUp_1()">&nbsp;</acronym>
+	<acronym class="dow" onmousedown="ISL_GoDown_1();" onmouseup="ISL_StopDown_1()" onmouseout="ISL_StopDown_1()">&nbsp;</acronym>
+ </div>
+ </h1>
+ <div class="brandlist clearfix" id="ISL_Cont_1" style="height:195px; overflow:hidden;">
+ <div class="fl" id="List1_1">
+   <!-- {foreach from=$brand_list item=brand name="brand_foreach"} -->
+      <!-- {if $brand.brand_logo} -->
+			<a href="{$brand.url}"><img src="data/brandlogo/{$brand.brand_logo}" alt="{$brand.brand_name|escape:html} ({$brand.goods_num})" /></a>
+      <!-- {else} -->
+       <a href="{$brand.url}" class="text">{$brand.brand_name|escape:html} {if $brand.goods_num}({$brand.goods_num}){/if}</a>
+      <!-- {/if} -->
+  <!-- {/foreach} -->
+ </div>	
+ <div class="fl" id="List2_1" style="*margin-top:2px;"></div>
+</div>
+</div>
+<script language="javascript" type="text/javascript">
+var intval = 5000;
+var Speed_1 = 10;
+var Space_1 = 20;
+var PageWidth_1 = parseInt(document.getElementById('ISL_Cont_1').style.height) + 1; //滚屏高度
+
+var fill_1 = 0;
+var MoveLock_1 = false;
+var MoveTimeObj_1;
+var MoveWay_1="right";
+var Comp_1 = 0;
+var AutoPlayObj_1=null;
+var BrandLogo=GetObj("List1_1").getElementsByTagName("a").length;
+if(BrandLogo>=8){
+GetObj("List2_1").innerHTML=GetObj("List1_1").innerHTML;
+GetObj('ISL_Cont_1').scrollTop=fill_1>=0?fill_1:GetObj('List1_1').scrollHeight-Math.abs(fill_1);
+GetObj("ISL_Cont_1").onmouseover=function(){clearInterval(AutoPlayObj_1)}
+GetObj("ISL_Cont_1").onmouseout=function(){AutoPlay_1()}
+AutoPlay_1();
+}else{
+GetObj("more").style.display="none";
+}
+function GetObj(objName){
+	if(document.getElementById){
+	  return eval('document.getElementById("'+objName+'")')
+	}else{
+	 return eval('document.all.'+objName)}
+}
+function AutoPlay_1(){
+	clearInterval(AutoPlayObj_1);
+	AutoPlayObj_1=setInterval('ISL_GoDown_1();ISL_StopDown_1();',intval);
+}
+function ISL_GoUp_1(){
+	if(MoveLock_1)return;
+	clearInterval(AutoPlayObj_1);
+	MoveLock_1=true;MoveWay_1="left";
+	MoveTimeObj_1=setInterval('ISL_ScrUp_1();',Speed_1);
+}
+function ISL_StopUp_1(){
+	if(MoveWay_1 == "right"){return};
+	clearInterval(MoveTimeObj_1);
+	if((GetObj('ISL_Cont_1').scrollTop-fill_1)%PageWidth_1!=0){
+	Comp_1=fill_1-(GetObj('ISL_Cont_1').scrollTop%PageWidth_1);
+	CompScr_1()
+	}else{
+	MoveLock_1=false;
+	}
+	AutoPlay_1()
+}
+function ISL_ScrUp_1(){
+	if(GetObj('ISL_Cont_1').scrollTop<=0){
+	GetObj('ISL_Cont_1').scrollTop=GetObj('ISL_Cont_1').scrollTop+GetObj('List1_1').offsetheight;
+	}
+	GetObj('ISL_Cont_1').scrollTop-=Space_1;
+}
+function ISL_GoDown_1(){
+	clearInterval(MoveTimeObj_1);
+	if(MoveLock_1)return;
+	clearInterval(AutoPlayObj_1);
+	MoveLock_1=true;
+	MoveWay_1="right";
+	ISL_ScrDown_1();
+	MoveTimeObj_1=setInterval('ISL_ScrDown_1()',Speed_1);
+}
+function ISL_StopDown_1(){
+	if(MoveWay_1 == "left"){return};
+	clearInterval(MoveTimeObj_1);
+	if(GetObj('ISL_Cont_1').scrollTop%PageWidth_1-(fill_1>=0?fill_1:fill_1+1)!=0){
+	Comp_1=PageWidth_1-GetObj('ISL_Cont_1').scrollTop%PageWidth_1+fill_1;CompScr_1();
+	}else{
+	MoveLock_1=false;
+	}
+	AutoPlay_1()
+}
+function ISL_ScrDown_1(){
+	if(GetObj('ISL_Cont_1').scrollTop>=GetObj('List1_1').scrollHeight){
+	GetObj('ISL_Cont_1').scrollTop=GetObj('ISL_Cont_1').scrollTop-GetObj('List1_1').scrollHeight;
+	}
+	GetObj('ISL_Cont_1').scrollTop+=Space_1;
+}
+function CompScr_1(){
+if(Comp_1==0){
+MoveLock_1=false;
+return;
+}
+var num,TempSpeed=Speed_1,TempSpace=Space_1;
+if(Math.abs(Comp_1)<PageWidth_1/2){
+TempSpace=Math.round(Math.abs(Comp_1/Space_1));
+if(TempSpace<1){TempSpace=1}
+}
+if(Comp_1<0){
+if(Comp_1<-TempSpace){
+Comp_1+=TempSpace;num=TempSpace;
+}else{num=-Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollTop-=num;setTimeout('CompScr_1()',TempSpeed)}else{if(Comp_1>TempSpace){Comp_1-=TempSpace;num=TempSpace}else{num=Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollTop+=num;setTimeout('CompScr_1()',TempSpeed)}}	
+</script>
+<!-- {/if} -->

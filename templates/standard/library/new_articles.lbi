@@ -1,0 +1,15 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $new_articles} -->
+<div class="mod1">
+ <h1 class="mod1tit"><p>最新文章</p></h1>
+ <!-- {foreach name=new_articles from=$new_articles item=article} -->
+	<a href="{$article.url}" title="{$article.title|escape:html}" class="txtdot">新春打折</a><br />
+	<a href="{$article.url}" title="{$article.title|escape:html}" class="txtdot">新春打折</a><br />
+	<a href="{$article.url}" title="{$article.title|escape:html}" class="txtdot">新春打折</a><br />
+	<a href="{$article.url}" title="{$article.title|escape:html}" class="txtdot">新春打折</a><br />
+	<a href="{$article.url}" title="{$article.title|escape:html}" class="txtdot">新春打折</a><br />
+	<a href="{$article.url}" title="{$article.title|escape:html}" class="txtdot">新春打折</a><br />
+	<a href="{$article.url}" title="{$article.title|escape:html}" class="txtdot">新春打折</a><br />
+ <!--{/foreach}-->
+</div>
+<!-- {/if} -->

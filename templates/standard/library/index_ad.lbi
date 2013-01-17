@@ -1,0 +1,15 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $index_ad eq 'sys'} -->
+  <script type="text/javascript">
+  var swf_width=532;
+  var swf_height=265;
+  </script>
+  <script type="text/javascript" src="/static/sandard/data/flashdata/{$flash_theme}/cycle_image.js"></script>
+
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="532" height="265">
+      <param name="movie" value="{$ad.content}" />
+      <param name="quality" value="high" />
+      <embed src="{$ad.content}" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="532" height="265"></embed>
+    </object>
+
+    

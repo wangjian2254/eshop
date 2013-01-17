@@ -1,0 +1,35 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{if $invoice_list}-->
+<style type="text/css">
+.vote{
+border-bottom:1px dashed #ccc;
+margin-bottom:8px;
+padding-bottom:5px;
+}
+.vote form{display:inline;}
+.vote form a{ text-decoration:underline;}
+</style>
+<div class="mod1">
+ <h1 class="mod1tit"><p>发货查询</p></h1>
+
+	 <div class="vote">
+   <strong>订单号</strong> 27575757<br />
+   <strong>发货单</strong> 458121<br />
+	 </div>
+	 <div class="vote">
+   <strong>订单号</strong> 27575757<br />
+   <strong>发货单</strong> 458121<br />
+	 </div>
+
+	 <div class="vote">
+   <strong>订单号</strong> 27575757<br />
+   <strong>发货单</strong> 458121<br />
+	 </div>
+
+	 <div class="vote">
+   <strong>订单号</strong> 27575757<br />
+   <strong>发货单</strong> 458121<br />
+	 </div>
+
+</div>
+<!-- {/if} -->

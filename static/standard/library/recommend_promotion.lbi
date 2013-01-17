@@ -1,0 +1,28 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<!-- {if $promotion_goods} -->
+<div class="mod1">
+	<h1 class="mod1tit"><p>{$lang.promotion_goods}</p><a href="../search.php?intro=promotion" class="more">more</a></h1>
+	<div class="promotion_goods">
+	 <!--{foreach from=$promotion_goods item=goods name="promotion_foreach"}-->
+	 <!-- {if $smarty.foreach.promotion_foreach.index lt 8} 限制显示数量 -->
+		 
+		 <div <!-- {if $smarty.foreach.promotion_foreach.iteration<4}--> class="goodsbox"<!--{else}--> class="proborder" <!-- {/if} -->>
+			 <!-- {if $smarty.foreach.promotion_foreach.iteration<4}--> 
+			 <div class="imgbox"><a href="{$goods.url}"><img src="{$goods.thumb}" border="0" alt="{$goods.name|escape:html}"/></a></div>
+			 <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name|truncate:3}</a><br />
+			 <font class="f1">{$goods.promote_price}</font>
+			 <!--{else}--> 
+			 <ul>
+			  <li>
+				<a href="{$goods.url}" title="{$goods.name|escape:html}" class="txtdot">{$goods.short_name|truncate:9}</a>
+			  <font class="f1">{$goods.promote_price}</font>
+			 </li>
+			 </ul>
+			 <!-- {/if} -->
+		 </div>
+		 
+	 <!-- {/if} -->
+   <!--{/foreach}-->
+</div>
+</div>
+<!-- {/if} -->
